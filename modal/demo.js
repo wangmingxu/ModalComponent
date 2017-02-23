@@ -35,7 +35,10 @@ document.getElementById('demo-btn').addEventListener('click', function() {
         title: 'confirm title',
         content: <p>看我随手一打又是十五字</p>,
         onOk() {
-            return new Promise(resolve => setTimeout(resolve, 1000))
+            return new Promise(resolve => setTimeout(function(){
+              console.log(11);
+              resolve();
+            }, 1000))
         },
         onCancel() {}
     })

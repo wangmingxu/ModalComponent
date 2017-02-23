@@ -67,3 +67,6 @@ export default function Confirm({
     zIndex,
   });
 }
+//confirm.js是在dialog.js(即./index.js)的基础上面在回调上面再做了一次处理，用于兼容传入promise的情况
+//把dialog组件变成一个可配置的函数，注意直接调用dialog组件和用函数动态设置dialog组件的区别
+//confirm.js的逻辑其实可以直接写在dialog组件里面，直接在dialog里面暴露这个配置的函数，但是这样dialog组件就不能做单独组件调用了
