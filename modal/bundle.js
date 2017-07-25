@@ -56,11 +56,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _modal = __webpack_require__(179);
+	var _modal = __webpack_require__(185);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
-	var _confirm = __webpack_require__(185);
+	var _confirm = __webpack_require__(189);
 
 	var _confirm2 = _interopRequireDefault(_confirm);
 
@@ -105,7 +105,9 @@
 	                    _modal2.default,
 	                    { show: this.state.show, title: 'title', onOk: function onOk() {
 	                            console.log('ok');_this2.setState({ show: false });
-	                        }, onCancel: this.onCancel },
+	                        }, onCancel: function onCancel() {
+	                            return _this2.onCancel();
+	                        } },
 	                    _react2.default.createElement(
 	                        'p',
 	                        null,
@@ -143,6 +145,7 @@
 	            return new Promise(function (resolve) {
 	                return setTimeout(function () {
 	                    console.log(11);
+	                    resolve();
 	                }, 1000);
 	            });
 	        },
@@ -21586,263 +21589,10 @@
 
 /***/ },
 /* 178 */,
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _modal = __webpack_require__(180);
-
-	var _modal2 = _interopRequireDefault(_modal);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(32);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	__webpack_require__(181);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _class = function (_Component) {
-	    _inherits(_class, _Component);
-
-	    function _class() {
-	        _classCallCheck(this, _class);
-
-	        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-	    }
-
-	    _createClass(_class, [{
-	        key: 'appendMaskIntoDoc',
-	        value: function appendMaskIntoDoc() {
-	            _reactDom2.default.unstable_renderSubtreeIntoContainer(this, _react2.default.createElement(
-	                _modal2.default,
-	                this.props,
-	                this.props.children
-	            ), this.container);
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.container = document.createElement('div');
-	            document.body.appendChild(this.container);
-	            this.appendMaskIntoDoc();
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            this.appendMaskIntoDoc();
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            document.body.removeChild(this.container);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return null;
-	        }
-	    }]);
-
-	    return _class;
-	}(_react.Component);
-
-	exports.default = _class;
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var defaultProps = {
-	    show: false,
-	    title: '',
-	    zIndex: 1000,
-	    onOk: function onOk() {},
-	    onCancel: function onCancel() {}
-	};
-
-	var propTypes = {
-	    title: _react.PropTypes.string,
-	    zIndex: _react.PropTypes.number,
-	    onOk: _react.PropTypes.func,
-	    onCancel: _react.PropTypes.func
-	};
-
-	var Modal = function (_Component) {
-	    _inherits(Modal, _Component);
-
-	    function Modal(props) {
-	        _classCallCheck(this, Modal);
-
-	        var _this = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
-
-	        _this.state = { show: props.show };
-	        return _this;
-	    }
-
-	    _createClass(Modal, [{
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            this.setState({ show: nextProps.show });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-
-	            var _props = this.props,
-	                title = _props.title,
-	                zIndex = _props.zIndex,
-	                onOk = _props.onOk,
-	                onCancel = _props.onCancel;
-
-	            document.body.style = this.state.show ? 'overflow: hidden' : '';
-	            return _react2.default.createElement(
-	                'div',
-	                {
-	                    style: {
-	                        display: this.state.show ? null : 'none'
-	                    }
-	                },
-	                _react2.default.createElement('div', { className: 'm-mask', style: { zIndex: zIndex - 1 } }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'm-dialog', style: { zIndex: zIndex } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'md-dialog' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'md-dialog-title' },
-	                            _react2.default.createElement(
-	                                'h4',
-	                                null,
-	                                title
-	                            ),
-	                            _react2.default.createElement(
-	                                'span',
-	                                { className: 'btn' },
-	                                _react2.default.createElement(
-	                                    'i',
-	                                    { className: 'iconfont', onClick: function onClick() {
-	                                            return _this2.setState({ show: false });
-	                                        } },
-	                                    '\xD7'
-	                                )
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'md-dialog-content' },
-	                            this.props.children
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'md-dialog-foot' },
-	                            _react2.default.createElement(
-	                                'a',
-	                                { href: '#', className: 'btns', onClick: onCancel.bind(this) },
-	                                '\u53D6\u6D88'
-	                            ),
-	                            _react2.default.createElement(
-	                                'a',
-	                                { href: '#', className: 'btns btns-blue', onClick: onOk.bind(this) },
-	                                '\u786E\u5B9A'
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Modal;
-	}(_react.Component);
-
-	exports.default = Modal;
-
-
-	Modal.defaultProps = defaultProps;
-	Modal.propTypes = propTypes;
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(182);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(184)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./style.scss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./style.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(183)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n* {\n  margin: 0;\n  padding: 0; }\n\na {\n  text-decoration: none; }\n\n/* 弹层透明遮罩层样式 */\n.m-mask {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 100%;\n  background-color: rgba(233, 233, 233, 0.5); }\n\n/*\t弹层通用样式\t*/\n.m-dialog {\n  position: fixed;\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n  -o-transform: translate(-50%, -50%);\n  -ms-transform: translate(-50%, -50%);\n  -moz-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  width: auto;\n  border: 1px solid #cacacb;\n  box-shadow: 5px 5px 5px #ccc;\n  z-index: 99; }\n\n/*\t弹层通用头尾样式\t*/\n.md-dialog {\n  background-color: #fff;\n  min-width: 370px; }\n  .md-dialog-title {\n    margin: 0 24px;\n    overflow: hidden;\n    height: 62px;\n    position: relative;\n    border-bottom: 1px solid #ececec;\n    line-height: 62px; }\n    .md-dialog-title h4 {\n      font-size: 18px;\n      color: #616161;\n      float: left; }\n    .md-dialog-title .iconfont {\n      font-size: 20px;\n      float: right;\n      cursor: pointer; }\n  .md-dialog-content {\n    padding: 5px 24px;\n    max-width: 540px;\n    word-wrap: break-word;\n    word-break: break-all;\n    max-height: 200px;\n    overflow-y: auto; }\n  .md-dialog-foot {\n    padding: 16px 24px;\n    background-color: #f9fafe;\n    overflow: hidden; }\n    .md-dialog-foot .btns {\n      height: 30px;\n      line-height: 30px;\n      padding: 0 12px;\n      font-size: 14px;\n      margin-left: 8px;\n      float: right;\n      display: inline-block;\n      border-radius: 5px;\n      border: 1px solid #ccc;\n      color: #616161;\n      background-color: #fff; }\n    .md-dialog-foot .btns-blue {\n      color: #fff;\n      background-color: #008ed6;\n      padding: 0 16px; }\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
 /* 183 */
 /***/ function(module, exports) {
 
@@ -22162,9 +21912,269 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _modal = __webpack_require__(186);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	__webpack_require__(187);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _class = function (_Component) {
+	    _inherits(_class, _Component);
+
+	    function _class() {
+	        _classCallCheck(this, _class);
+
+	        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+	    }
+
+	    _createClass(_class, [{
+	        key: 'appendMaskIntoDoc',
+	        value: function appendMaskIntoDoc() {
+	            _reactDom2.default.unstable_renderSubtreeIntoContainer(this, _react2.default.createElement(
+	                _modal2.default,
+	                this.props,
+	                this.props.children
+	            ), this.container);
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.container = document.createElement('div');
+	            document.body.appendChild(this.container);
+	            this.appendMaskIntoDoc();
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            this.appendMaskIntoDoc();
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            document.body.removeChild(this.container);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return null;
+	        }
+	    }]);
+
+	    return _class;
+	}(_react.Component);
+	//为什么不直接用render(),而是用unstable_renderSubtreeIntoContainer？
+	//unstable_renderSubtreeIntoContainer不会把父组件（也就是this)渲染
+	//为什么需要做这一个中间层？为什么不直接调用modal组件（这里相当于把children向下传了一层）
+	//这个中间层主要是新建一个container和组件移除时清除这个container
+
+
+	exports.default = _class;
+
+/***/ },
+/* 186 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var defaultProps = {
+	    show: false,
+	    title: '',
+	    zIndex: 1000,
+	    onOk: function onOk() {},
+	    onCancel: function onCancel() {}
+	};
+
+	var propTypes = {
+	    title: _react.PropTypes.string,
+	    zIndex: _react.PropTypes.number,
+	    onOk: _react.PropTypes.func,
+	    onCancel: _react.PropTypes.func
+	};
+
+	var Modal = function (_Component) {
+	    _inherits(Modal, _Component);
+
+	    function Modal(props) {
+	        _classCallCheck(this, Modal);
+
+	        return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
+	        // this.state = {show: props.show}
+	    }
+
+	    // componentWillReceiveProps(nextProps) {
+	    //     this.setState({show: nextProps.show})
+	    // }
+
+	    _createClass(Modal, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            var _props = this.props,
+	                title = _props.title,
+	                zIndex = _props.zIndex,
+	                onOk = _props.onOk,
+	                onCancel = _props.onCancel,
+	                show = _props.show;
+
+	            document.body.style = show ? 'overflow: hidden' : '';
+	            return _react2.default.createElement(
+	                'div',
+	                {
+	                    style: {
+	                        display: show ? null : 'none'
+	                    }
+	                },
+	                _react2.default.createElement('div', { className: 'm-mask', style: { zIndex: zIndex - 1 } }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'm-dialog', style: { zIndex: zIndex } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'md-dialog' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'md-dialog-title' },
+	                            _react2.default.createElement(
+	                                'h4',
+	                                null,
+	                                title
+	                            ),
+	                            _react2.default.createElement(
+	                                'span',
+	                                { className: 'btn' },
+	                                _react2.default.createElement(
+	                                    'i',
+	                                    { className: 'iconfont', onClick: function onClick() {
+	                                            return _this2.setState({ show: false });
+	                                        } },
+	                                    '\xD7'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'md-dialog-content' },
+	                            this.props.children
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'md-dialog-foot' },
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#', className: 'btns', onClick: onCancel },
+	                                '\u53D6\u6D88'
+	                            ),
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#', className: 'btns btns-blue', onClick: onOk },
+	                                '\u786E\u5B9A'
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Modal;
+	}(_react.Component);
+
+	exports.default = Modal;
+
+
+	Modal.defaultProps = defaultProps;
+	Modal.propTypes = propTypes;
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(188);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(184)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(183)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "@charset \"UTF-8\";\n* {\n  margin: 0;\n  padding: 0; }\n\na {\n  text-decoration: none; }\n\n/* 弹层透明遮罩层样式 */\n.m-mask {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 100%;\n  background-color: rgba(233, 233, 233, 0.5); }\n\n/*\t弹层通用样式\t*/\n.m-dialog {\n  position: fixed;\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n  -o-transform: translate(-50%, -50%);\n  -ms-transform: translate(-50%, -50%);\n  -moz-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  width: auto;\n  border: 1px solid #cacacb;\n  box-shadow: 5px 5px 5px #ccc;\n  z-index: 99; }\n\n/*\t弹层通用头尾样式\t*/\n.md-dialog {\n  background-color: #fff;\n  min-width: 370px; }\n  .md-dialog-title {\n    margin: 0 24px;\n    overflow: hidden;\n    height: 62px;\n    position: relative;\n    border-bottom: 1px solid #ececec;\n    line-height: 62px; }\n    .md-dialog-title h4 {\n      font-size: 18px;\n      color: #616161;\n      float: left; }\n    .md-dialog-title .iconfont {\n      font-size: 20px;\n      float: right;\n      cursor: pointer; }\n  .md-dialog-content {\n    padding: 5px 24px;\n    max-width: 540px;\n    word-wrap: break-word;\n    word-break: break-all;\n    max-height: 200px;\n    overflow-y: auto; }\n  .md-dialog-foot {\n    padding: 16px 24px;\n    background-color: #f9fafe;\n    overflow: hidden; }\n    .md-dialog-foot .btns {\n      height: 30px;\n      line-height: 30px;\n      padding: 0 12px;\n      font-size: 14px;\n      margin-left: 8px;\n      float: right;\n      display: inline-block;\n      border-radius: 5px;\n      border: 1px solid #ccc;\n      color: #616161;\n      background-color: #fff; }\n    .md-dialog-foot .btns-blue {\n      color: #fff;\n      background-color: #008ed6;\n      padding: 0 16px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	exports.default = Confirm;
 
-	var _ = __webpack_require__(179);
+	var _ = __webpack_require__(185);
 
 	var _2 = _interopRequireDefault(_);
 
@@ -22273,6 +22283,9 @@
 	        zIndex: zIndex
 	    });
 	}
+	//confirm.js是在dialog.js(即./index.js)的基础上面在回调上面再做了一次处理，用于兼容传入promise的情况
+	//把dialog组件变成一个可配置的函数，注意直接调用dialog组件和用函数动态设置dialog组件的区别
+	//confirm.js的逻辑其实可以直接写在dialog组件里面，直接在dialog里面暴露这个配置的函数，但是这样dialog组件就不能做单独组件调用了
 
 /***/ }
 /******/ ]);

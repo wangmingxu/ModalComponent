@@ -18,20 +18,20 @@ const propTypes = {
 export default class Modal extends Component {
     constructor(props) {
         super(props)
-        this.state = {show: props.show}
+        // this.state = {show: props.show}
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({show: nextProps.show})
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState({show: nextProps.show})
+    // }
 
     render() {
-        const { title, zIndex, onOk, onCancel } = this.props
-        document.body.style = this.state.show ? 'overflow: hidden' : ''
+        const { title, zIndex, onOk, onCancel ,show } = this.props
+        document.body.style = show ? 'overflow: hidden' : ''
         return (
             <div
                 style={{
-                    display: this.state.show ? null : 'none',
+                    display: show ? null : 'none',
                 }}
             >
                 <div className="m-mask" style={{ zIndex: zIndex - 1 }}></div>
@@ -47,8 +47,8 @@ export default class Modal extends Component {
                             {this.props.children}
                         </div>
                         <div className="md-dialog-foot">
-                            <a href="#" className="btns" onClick={onCancel.bind(this)}>取消</a>
-                            <a href="#" className="btns btns-blue" onClick={onOk.bind(this)}>确定</a>
+                            <a href="#" className="btns" onClick={onCancel}>取消</a>
+                            <a href="#" className="btns btns-blue" onClick={onOk}>确定</a>
                         </div>
                     </div>
                 </div>
